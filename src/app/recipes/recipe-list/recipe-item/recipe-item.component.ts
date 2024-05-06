@@ -12,8 +12,8 @@ export class RecipeItemComponent {
 
   constructor(private recipeService: RecipeService){}
 //   @Output() recipeSelected = new EventEmitter<void>();
-  onSelected() {
-    // this.recipeSelected.emit();
-    this.recipeService.recipeSelected.emit(this.recipe);
-  }
+  // onSelected() {
+  //   // this.recipeSelected.emit();
+  //   this.recipeService.recipeSelected.emit(this.recipe);
+  // }
 }
