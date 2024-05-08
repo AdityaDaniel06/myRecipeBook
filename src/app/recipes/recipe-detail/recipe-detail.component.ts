@@ -9,16 +9,18 @@ import { ActivatedRoute, Params } from '@angular/router';
   styleUrl: './recipe-detail.component.css',
 })
 export class RecipeDetailComponent implements OnInit {
-  constructor(private recipeService: RecipeService ,
-    private route: ActivatedRoute,
+  constructor(
+    private recipeService: RecipeService,
+    private route: ActivatedRoute
   ) {}
-   recipe: Recipe;
-   id: number;
+  recipe: Recipe;
+  id: number;
 
   ngOnInit() {
-   this.route.params.subscribe( (params: Params) => {
-    this.id = +params['id'];
-   })
+    this.route.params.subscribe((params: Params) => {
+      this.id = +params['id'];
+      this.recipe = this.recipeService.getRecipe(this.id);
+    });
   }
 
   onAddToShoppingList() {
