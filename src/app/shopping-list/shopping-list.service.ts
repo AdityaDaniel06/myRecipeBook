@@ -8,14 +8,19 @@ import { Subject } from 'rxjs';
 export class ShoppingListService {
   // ingredientsChanged = new EventEmitter<Ingredients[]>();
   ingredientsChanged = new Subject<Ingredients[]>();
+  startedEditing = new Subject<number>();
 
   private ingredients: Ingredients[] = [
     new Ingredients('Apples', 5),
     new Ingredients('Tomatoes', 10),
   ];
 
-  getIngredient() {
+  getIngredients() {
     return this.ingredients.slice();
+  }
+
+  getIngredient(index: number){
+    return this.ingredients[index];
   }
 
   addIngredient(ingredent: Ingredients) {
@@ -24,6 +29,7 @@ export class ShoppingListService {
     this.ingredientsChanged.next(this.ingredients.slice());
     
   }
+
 
   addingredients(ingredients: Ingredients[]) {
     this.ingredients.push(...ingredients);
