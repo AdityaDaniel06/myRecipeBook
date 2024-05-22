@@ -4,22 +4,24 @@ import { Ingredients } from '../shared/ingredient.modal';
 import { ShoppingListService } from '../shopping-list/shopping-list.service';
 import { Subject } from 'rxjs';
 
-@Injectable({ // needed when services injected in a serivce
+@Injectable({
+  // needed when services injected in a serivce
   providedIn: 'root',
 })
 export class RecipeService {
-
   // recipeSelected = new EventEmitter<Recipe>();
   // recipeSelected = new Subject<Recipe>();
+  recipesChanged = new Subject<Recipe[]>();
 
-  private recipes: Recipe[] = [new Recipe(
+  private recipes: Recipe[] = [
+    new Recipe(
       'Big fat Burger',
       'What else you need to say?',
       'https://t3.ftcdn.net/jpg/02/44/61/14/360_F_244611436_4WKrV3YAOBo0LKe9S7hoXv55aDmgwvwr.jpg',
       [
         new Ingredients('Meat', 1),
         new Ingredients('Buns', 2),
-        new Ingredients('French Fries' , 40)  
+        new Ingredients('French Fries', 40),
       ]
     ),
     new Recipe(
@@ -29,8 +31,8 @@ export class RecipeService {
       [
         new Ingredients('Flour', 1),
         new Ingredients('Tomato', 6),
-        new Ingredients('Olives' , 8),
-        new Ingredients('Sweet Corns' , 2)  
+        new Ingredients('Olives', 8),
+        new Ingredients('Sweet Corns', 2),
       ]
     ),
     new Recipe(
@@ -40,22 +42,34 @@ export class RecipeService {
       [
         new Ingredients('Pasta', 1),
         new Ingredients('Tomato', 2),
-        new Ingredients('Spanich' , 4),
+        new Ingredients('Spanich', 4),
       ]
     ),
-
-
   ];
 
   constructor(private slService: ShoppingListService) {}
   getRecipes() {
     return this.recipes.slice();
   }
-  getRecipe(index: number){
+  getRecipe(index: number) {
     return this.recipes[index];
   }
 
-  addIngredientsToShoppingList(ingredients: Ingredients[]){
+  addIngredientsToShoppingList(ingredients: Ingredients[]) {
     this.slService.addingredients(ingredients);
+  }
+
+  addRecipe(recipe: Recipe) {
+    this.recipes.push(recipe);
+    this.recipesChanged.next(this.recipes.slice());
+  }
+
+  updateRecipe(index: number, newRecipe: Recipe) {
+    this.recipes[index] = newRecipe;
+    this.recipesChanged.next(this.recipes.slice());
+  }
+  deleteRecipe(index: number){
+    this.recipes.splice(index , 1);
+    this.recipesChanged.next(this.recipes.slice());
   }
 }
