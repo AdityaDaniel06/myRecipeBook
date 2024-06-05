@@ -9,7 +9,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './recipe-list.component.html',
   styleUrl: './recipe-list.component.css',
 })
-export class RecipeListComponent implements OnInit ,OnDestroy {
+export class RecipeListComponent implements OnInit  {
   // @Output() recipeWasSelected = new EventEmitter<Recipe>();
   recipes: Recipe[];
   subscriptions: Subscription
@@ -37,8 +37,8 @@ export class RecipeListComponent implements OnInit ,OnDestroy {
   onNewRecipe() {
     this.router.navigate(['new'], { relativeTo: this.route });
   }
-ngOnDestroy(): void {
-  this.subscriptions.unsubscribe();
-}
+// ngOnDestroy(){
+//   this.subscriptions.unsubscribe();
+// }
   
 }
