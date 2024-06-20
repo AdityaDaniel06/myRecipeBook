@@ -12,12 +12,10 @@
           <a href="#" (click)="onSelect('shopping-list')">Shopping List</a>
         </li> -->
         <li routerLinkActive="active" *ngIf="isAuthenticated">
-          <a routerLink="/recipes"><i class="bi bi-egg-fill"> </i>Recipes</a>
+          <a routerLink="/recipes"><i class="bi bi-egg"> </i>Recipes</a>
         </li>
         <li routerLinkActive="active" *ngIf="!isAuthenticated">
-          <a routerLink="/auth"
-            ><i class="bi bi-lock-fill"> </i> Authenticate</a
-          >
+          <a routerLink="/auth"><i class="bi bi-lock"> </i> Authenticate</a>
         </li>
         <li routerLinkActive="active">
           <a routerLink="/shopping-list">
@@ -27,7 +25,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li *ngIf="isAuthenticated">
-          <a style="cursor: pointer"
+          <a style="cursor: pointer" (click)="onLogout()"
             ><i class="bi bi-box-arrow-right"> </i> Logout</a
           >
         </li>
