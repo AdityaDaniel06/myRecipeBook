@@ -13,6 +13,7 @@ export class AuthComponent {
   isLoginMode: boolean = true;
   isLoading: boolean = false;
   error: string = null;
+  defaultUser: string ='test@test.com'
 
   constructor(private authService: AuthService ,
    private router: Router 

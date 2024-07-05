@@ -1,12 +1,16 @@
 <div class="container m-2 col-lg-offset-2">
   <!-- 
    -->
-  <app-alert [message]="error" *ngIf="error" (close)="OnHandleError()"></app-alert>
-  <div style="text-align: center;" *ngIf="isLoading">
+  <app-alert
+    [message]="error"
+    *ngIf="error"
+    (close)="OnHandleError()"
+  ></app-alert>
+  <div style="text-align: center" *ngIf="isLoading">
     <app-spinner></app-spinner>
   </div>
   <div class="col-xs-5" *ngIf="!isLoading">
-    <form #authForm="ngForm" (ngSubmit)="onLogin(authForm)" >
+    <form #authForm="ngForm" (ngSubmit)="onLogin(authForm)">
       <div class="form-group">
         <label for="email">E-mail</label>
         <input
@@ -46,6 +50,7 @@
         >
           Switch to {{ isLoginMode ? "Sign Up" : "Login !" }}
         </button>
+        <span>userID: {{ defaultUser }} | password: 123456 </span>
       </div>
     </form>
   </div>
