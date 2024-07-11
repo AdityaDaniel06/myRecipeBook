@@ -9,7 +9,7 @@
   <div style="text-align: center" *ngIf="isLoading">
     <app-spinner></app-spinner>
   </div>
-  <div class="col-xs-5" *ngIf="!isLoading">
+  <div class="col-xs-5 for-border" *ngIf="!isLoading">
     <form #authForm="ngForm" (ngSubmit)="onLogin(authForm)">
       <div class="form-group">
         <label for="email">E-mail</label>
@@ -50,9 +50,9 @@
         >
           Switch to {{ isLoginMode ? "Sign Up" : "Login !" }}
         </button>
-        <span>userID: {{ defaultUser }} | password: 123456 </span>
+        <p>userId: {{ defaultUser }} | password: 123456</p>
       </div>
     </form>
   </div>
-
+  <!-- <div class="col-xs-5 rightSideImg" *ngIf="!isLoading"></div> -->
 </div>

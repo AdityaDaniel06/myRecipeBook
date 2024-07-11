@@ -1,0 +1,15 @@
+.for-border {
+  border: 1px solid #c5dbfa;
+  padding: 30px;
+  margin-top: 125px;
+  border-radius: 3px;
+  box-shadow: 5px 5px 18px 5px #e7e9eb;
+}
+
+.rightSideImg {
+  background-image: url(../../assets/stacked-waves-haikei.png);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  /* min-height: max-content; */
+}
