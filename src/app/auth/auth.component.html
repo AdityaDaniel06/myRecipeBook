@@ -10,6 +10,10 @@
     <app-spinner></app-spinner>
   </div>
   <div class="col-xs-5 for-border" *ngIf="!isLoading">
+    <div>
+      <h1>Hello User!</h1>
+      <h3>Welcome to our My Recipe App!</h3>
+    </div>
     <form #authForm="ngForm" (ngSubmit)="onLogin(authForm)">
       <div class="form-group">
         <label for="email">E-mail</label>
